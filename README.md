@@ -1,5 +1,5 @@
 # Ex05 Image Carousel
-## Date:
+## Date:20.03.2026
 
 ## AIM
 To create a Image Carousel using React 
@@ -39,9 +39,75 @@ Use setInterval to call the nextImage() function at regular intervals.
 Clean up the interval when the component unmounts using clearInterval to prevent memory leaks.
 
 ## PROGRAM
+## index.html
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Carousel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <h2>React Image Carousel</h2>
+
+  <div class="carousel">
+    <img id="carouselImage" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+  </div>
+
+  <div>
+    <button onclick="prevImage()">Previous</button>
+    <button onclick="nextImage()">Next</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+## script.js
+```
+const images = [
+  "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+  "https://images.unsplash.com/photo-1491553895911-0055eca6402d"
+];
+
+let index = 0;
+
+function showImage() {
+  document.getElementById("carouselImage").src = images[index];
+}
+
+function prevImage() {
+  index = (index - 1 + images.length) % images.length;
+  showImage();
+}
+
+function nextImage() {
+  index = (index + 1) % images.length;
+  showImage();
+}
+```
+##  app.js
+```
+import React from "react";
+import ImageCarousel from "./ImageCarousel";
+
+function App() {
+  return (
+    <div>
+      <ImageCarousel />
+    </div>
+  );
+}
+
+export default App;
+
+```
 
 ## OUTPUT
+<img width="1906" height="660" alt="image" src="https://github.com/user-attachments/assets/841c38ba-ed38-4570-acc2-0f879147f292" />
 
 
 ## RESULT
